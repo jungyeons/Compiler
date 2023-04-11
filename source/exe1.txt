@@ -1,0 +1,37 @@
+		.header
+		count 0
+		sum 4
+		i 8
+
+		
+		.code
+		
+		mov MAR @count
+		mov MBR 10
+		sto
+		mov MAR @sum
+		mov MBR 0
+		sto
+		mov MAR @i
+		mov MBR 0
+		sto
+start:  
+		mov MAR @i
+		lda
+		mov AC1 MBR
+		mov MAR @count
+		lda
+		mov AC2 MBR
+		sub AC1 AC2
+		gtj end		
+		mov MAR @sum
+		lda
+		mov AC1 MBR
+		mov AC2 1
+		add AC1 AC2
+		mov MBR AC1
+		mov MAR @sum
+		sto
+		jump start
+end:	halt
+		.end
